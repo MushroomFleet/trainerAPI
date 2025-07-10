@@ -1,0 +1,17 @@
+dataset_url: https://example.com/my-dataset.zip
+destination: username/my-lora-model
+trigger_word: MYTOK
+training:
+  steps: 1500
+  batch_size: 4
+  optimizer: prodigy
+  learning_rate: 1.0
+  resolution: 768,1024
+  lora_rank: 16
+wandb:
+  project: sd3.5_train_replicate
+  save_interval: 100
+  sample_interval: 100
+advanced:
+  caption_dropout_rate: 0.05
+  cache_latents_to_disk: false

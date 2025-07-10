@@ -1,0 +1,38 @@
+Install Replicate’s Python client library:
+pip install replicate
+
+Copy
+Set the REPLICATE_API_TOKEN environment variable:
+export REPLICATE_API_TOKEN=r8_Hb0**********************************
+
+Visibility
+
+Copy
+This is your Default API token. Keep it to yourself.
+
+Import the client:
+import replicate
+
+Copy
+Train lucataco/sd3.5-large-fine-tuner using Replicate’s API:
+
+training = replicate.trainings.create(
+  # You need to create a model on Replicate that will be the destination for the trained version.
+  destination="mushroomfleet/model-name"
+  version="lucataco/sd3.5-large-fine-tuner:64360fd3c38f47e8132564044b67b1ed1d45b450f008b896d354c4d0d65973d0",
+  input={
+    "steps": 700,
+    "lora_rank": 16,
+    "optimizer": "adamw8bit",
+    "batch_size": 1,
+    "resolution": "512,768",
+    "input_images": "https://",
+    "trigger_word": "TOK",
+    "learning_rate": 0.0004,
+    "wandb_project": "sd3.5_train_replicate",
+    "wandb_save_interval": 100,
+    "caption_dropout_rate": 0.05,
+    "cache_latents_to_disk": False,
+    "wandb_sample_interval": 100
+  },
+)
